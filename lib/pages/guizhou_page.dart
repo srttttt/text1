@@ -8,7 +8,7 @@ class GuizhouPage extends StatelessWidget {
       'name': '황과수 폭포 / 黄果树瀑布',
       'nameZh': 'Huangguoshu Waterfall',
       'rating': '4.9',
-      'coverUrl': 'https://images.pexels.com/photos/1114693/pexels-photo-1114693.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g6/M00/04/03/ChMkKWAGyQqIdcL9AAQZmP7Dgx0AAIjMQL-eikABBmw779.jpg',
       'description':
           '황과수 폭포(黄果树瀑布)는 중국 최대의 폭포로, 높이 77.8m, 폭 101m입니다. '
           '폭포 뒤편에는 수렴동(水帘洞)이 있어 폭포 안에서 밖을 볼 수 있습니다.\n\n'
@@ -22,7 +22,7 @@ class GuizhouPage extends StatelessWidget {
       'name': '시강 천호 묘족 마을 / 西江千户苗寨',
       'nameZh': 'Xijiang Miao Village',
       'rating': '4.7',
-      'coverUrl': 'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://thf.bing.com/th/id/R.0efcb4d8d4bda8009aa20c77f7045808?rik=L0F05xgIQ%2f65Ow&riu=http%3a%2f%2fimages.xjqhmz.com%2fimage%2f2023%2f04%2f28%2f1651775923013394433.jpg&ehk=ZMXTA2%2b6DFpdNMu39HJfAdDVYgesIH%2fD%2frQMljI2dcM%3d&risl=&pid=ImgRaw&r=0',
       'description':
           '시장(西江) 천호 묘족 마을은 세계 최대의 묘족 집락으로, 1000여 채의 전통 고가식 건물이 산비탈에 늘어서 있습니다. '
           '야경이 특히 아름답습니다.\n\n'
@@ -36,7 +36,7 @@ class GuizhouPage extends StatelessWidget {
       'name': '룽지 계단식 논 / 龙脊梯田',
       'nameZh': 'Longji Rice Terraces',
       'rating': '4.8',
-      'coverUrl': 'https://images.pexels.com/photos/2721668/pexels-photo-2721668.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://thf.bing.com/th/id/R.b93424f22fe09c0679da1fae58eacb56?rik=NuWHRNPKiffvkg&riu=http%3a%2f%2fwp.longjitour.com%2fwp-content%2fuploads%2f2020%2f01%2f2020010201503217.jpg&ehk=1W0IdSzEYfwaHrBTiN4xgxzZ%2b1e52%2bV6fTR%2fJ1sJAN0%3d&risl=&pid=ImgRaw&r=0',
       'description':
           '룽지(龙脊) 계단식 논은 구이저우 성의 장족 지구에 위치하며, '
           '봄철 물을 댄 논은 거울처럼 반사되고 가을에는 황금빛 물결이 아름답습니다.\n\n'

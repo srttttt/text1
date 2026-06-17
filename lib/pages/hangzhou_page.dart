@@ -8,7 +8,7 @@ class HangzhouPage extends StatelessWidget {
       'name': '서호 / 西湖',
       'nameZh': 'West Lake',
       'rating': '4.9',
-      'coverUrl': 'https://images.pexels.com/photos/1579213/pexels-photo-1579213.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://cdn.pixabay.com/photo/2020/12/14/21/32/west-lake-5832103_1280.jpg',
       'description':
           '서호는 항저우 서쪽에 위치한 담수호로, 2011년 유네스코 세계문화유산에 등재되었습니다.\n\n西湖位于杭州西部，2011年被列入联合国教科文组织世界文化遗产。',
       'highlights': ['소제춘효 / 苏堤春晓', '단교잔설 / 断桥残雪', '평호추월 / 平湖秋月'],
@@ -20,7 +20,7 @@ class HangzhouPage extends StatelessWidget {
       'name': '영은사 / 灵隐寺',
       'nameZh': 'Lingyin Temple',
       'rating': '4.8',
-      'coverUrl': 'https://images.pexels.com/photos/2477861/pexels-photo-2477861.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://thf.bing.com/th/id/R.c2612c82571103816e29457d1608d061?rik=O9NFOCI1lgPCrA&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fphotoblog%2f1108%2f14%2fc6%2f8643612_8643612_1313297013359.jpg&ehk=NvJ9iWLXF%2fNQH%2fy7mLwd%2bkMd3GcYk1hhc2hBMNIhIHY%3d&risl=&pid=ImgRaw&r=0',
       'description':
           '영은사는 동진 시대(326년)에 창건된 강남 최대 불교 사원입니다.\n\n灵隐寺创建于东晋时期，是江南最大的佛教寺院。',
       'highlights': ['비래봉 석각 / 飞来峰石刻', '대웅보전 / 大雄宝殿', '천왕전 / 天王殿'],
@@ -32,7 +32,7 @@ class HangzhouPage extends StatelessWidget {
       'name': '송성 / 宋城',
       'nameZh': 'Songcheng',
       'rating': '4.7',
-      'coverUrl': 'https://images.pexels.com/photos/2106044/pexels-photo-2106044.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://thf.bing.com/th/id/R.7f978114cd58ef1b6dd5c5d889d416d8?rik=LWlyrS8eaKKJLA&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn22%2f227%2fw1110h717%2f20180808%2f589a-hhkusku0732528.png&ehk=55bLBTRgr96W1aEQN93uEPey3nJqcLll6%2bUdjv9K3r0%3d&risl=&pid=ImgRaw&r=0',
       'description':
           '송성은 남송 시대 문화를 재현한 대형 테마파크입니다.\n\n宋城是再现南宋文化的大型主题公园。',
       'highlights': ['송성천고정 공연 / 宋城千古情', '송대 거리 / 宋代街市', '전통 공예 체험'],
@@ -44,7 +44,7 @@ class HangzhouPage extends StatelessWidget {
       'name': '서계 습지 / 西溪湿地',
       'nameZh': 'Xixi Wetland',
       'rating': '4.6',
-      'coverUrl': 'https://images.pexels.com/photos/457881/pexels-photo-457881.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://pic3.zhimg.com/v2-b5e1c8497e24e6f0e085aaa788d88306_1440w.jpg?source=172ae18b',
       'description':
           '서계 습지는 중국 최초의 국가 습지공원입니다.\n\n西溪湿地是中国第一个国家湿地公园。',
       'highlights': ['갈대밭 / 芦苇荡', '매화섬 / 梅花岛', '작은 배 체험 / 摇橹船体验'],
@@ -67,7 +67,7 @@ class HangzhouPage extends StatelessWidget {
       backgroundColor: const Color(0xFFF0F7F4),
       body: CustomScrollView(
         slivers: [
-          _buildAppBar('항저우 파노라마 / 杭州全景', 'https://images.pexels.com/photos/1579213/pexels-photo-1579213.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+          _buildAppBar('항저우 파노라마 / 杭州全景', 'https://thf.bing.com/th/id/R.17b13dabedf3612be20ce643bdd36973?rik=wR9nHAhK01ly%2fQ&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fphotoblog%2f1208%2f24%2fc5%2f13180459_13180459_1345797688052.jpg&ehk=bQ%2b8S%2b%2bbvuV%2bKerPzQMA%2fUoSAzBhIK63EMjKarMPaio%3d&risl=&pid=ImgRaw&r=0'),
           SliverToBoxAdapter(child: _IntroCard(
             title: '고향 지역 소개 / 家乡地区介绍',
             content: '항저우는 중국 저장성 성도로 인구 약 1300만 명의 역사 도시입니다. 서호는 유네스코 세계문화유산입니다.\n\n杭州是浙江省省会，人口约1300万，西湖是联合国教科文组织世界文化遗产。',

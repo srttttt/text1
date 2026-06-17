@@ -3,12 +3,28 @@ import 'package:flutter/material.dart';
 class HangzhouFoodPage extends StatelessWidget {
   const HangzhouFoodPage({super.key});
 
+  // 🎨 暖橘主题配色
+  static const primaryColor = Color(0xFFC67A3A);
+  static const accentColor = Color(0xFFE8A75A);
+  static const lightBgColor = Color(0xFFFDF8F3);
+  static const darkTextColor = Color(0xFF4A3520);
+
+  // 新增：杭帮菜代表名菜
+  static const List<Map<String, String>> famousDishes = [
+    {'name': '西湖醋鱼', 'nameKo': '서호초어', 'desc': '酸甜鲜嫩，杭帮菜之首', 'descKo': '새콤달콤하고 부드러운 식감, 항저우 요리의 으뜸'},
+    {'name': '东坡肉', 'nameKo': '동파육', 'desc': '肥而不腻，软糯香甜', 'descKo': '느끼하지 않고 부드러우며 달콤함'},
+    {'name': '龙井虾仁', 'nameKo': '룽징새우', 'desc': '茶香虾嫩，清雅脱俗', 'descKo': '차향과 부드러운 새우, 우아한 맛'},
+    {'name': '宋嫂鱼羹', 'nameKo': '송쇠어갱', 'desc': '鲜滑爽口，南宋名菜', 'descKo': '부드럽고 시원한 식감, 남송 시대 명요리'},
+    {'name': '叫花鸡', 'nameKo': '교화계', 'desc': '荷叶包裹，香气四溢', 'descKo': '연잎에 싸서 굽고 향기 가득'},
+    {'name': '葱包桧', 'nameKo': '총바오후이', 'desc': '街头经典，酥脆可口', 'descKo': '길거리 대표 간식, 바삭하고 맛있음'},
+  ];
+
   static const List<Map<String, dynamic>> attractions = [
     {
       'name': '하방가 / 河坊街',
       'nameZh': 'Hefang Street',
       'rating': '4.8',
-      'coverUrl': 'https://images.pexels.com/photos/2609224/pexels-photo-2609224.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://thf.bing.com/th/id/R.e3dc322287adf92fe907847ca0fde6c1?rik=X%2fOSMntCY2sp9Q&riu=http%3a%2f%2fk.sinaimg.cn%2fn%2fsinakd20200528ac%2f295%2fw1124h771%2f20200528%2f465b-iufmpmn7220301.jpg%2fw700d1q75cms.jpg%3fby%3dcms_fixed_width&ehk=InN%2bPOEVgvmDRrlLib1EKvg1bqWfST3S4GlUtiH1lGE%3d&risl=&pid=ImgRaw&r=0',
       'description':
           '하방가(河坊街)는 항저우에서 가장 유명한 음식 거리로, 전통 간식과 노포가 많습니다.\n\n'
           '河坊街是杭州最著名的美食街，聚集了传统小吃和老字号。',
@@ -21,7 +37,7 @@ class HangzhouFoodPage extends StatelessWidget {
       'name': '누와이라우 / 楼外楼',
       'nameZh': 'Louwailou Restaurant',
       'rating': '4.9',
-      'coverUrl': 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://youimg1.c-ctrip.com/target/100o190000017bjnm3D4F.jpg',
       'description':
           '누와이라우(楼外楼)는 서호 근처의 유명한 노포로, 항저우 요리의 대명사입니다.\n\n'
           '楼外楼是西湖边的百年老店，杭帮菜的代表。',
@@ -34,7 +50,7 @@ class HangzhouFoodPage extends StatelessWidget {
       'name': '룽징촌 / 龙井村',
       'nameZh': 'Longjing Village',
       'rating': '4.7',
-      'coverUrl': 'https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'coverUrl': 'https://thf.bing.com/th/id/R.91def3c662453b12e6e201e3b5323695?rik=WHMw0vSI%2b2TZoA&riu=http%3a%2f%2fzj.news.cn%2f2023-03%2f14%2f1129431304_16787816308111n.png&ehk=hjBtz99VBdb5Ruwunvf6SQtvCDYZssSZVlimI%2bLQGjk%3d&risl=&pid=ImgRaw&r=0',
       'description':
           '룽징촌(龙井村)은 유명한 룽징차 산지로, 차밭 경관과 차 체험이 가능합니다.\n\n'
           '龙井村是龙井茶的产地，可以体验采茶和品茶。',
@@ -45,56 +61,352 @@ class HangzhouFoodPage extends StatelessWidget {
     },
   ];
 
+  // 美食列表（去掉 emoji，改用文字标签）
   static const List<Map<String, String>> _foodList = [
-    {'emoji': '🐟', 'name': '서호초어 / 西湖醋鱼', 'desc': '누와이라우 대표 요리 / 楼外楼招牌菜', 'spot': '누와이라우 / 楼外楼', 'bg': 'red'},
-    {'emoji': '🍖', 'name': '동파육 / 东坡肉', 'desc': '소동파가 즐긴 돼지고기 조림 / 苏东坡喜爱的红烧肉', 'spot': '누와이라우 / 楼外楼', 'bg': 'orange'},
-    {'emoji': '🍤', 'name': '룽징새우 / 龙井虾仁', 'desc': '룽징차 향이 나는 새우 요리 / 带有龙井茶香的虾仁', 'spot': '룽징촌 / 龙井村', 'bg': 'green'},
-    {'emoji': '🥠', 'name': '정승고 / 定胜糕', 'desc': '하방가 전통 찹쌀 떡 / 河坊街传统糯米糕', 'spot': '하방가 / 河坊街', 'bg': 'purple'},
+    {'name': '西湖醋鱼', 'nameKo': '서호초어', 'desc': '누와이라우 대표 요리 / 楼外楼招牌菜', 'spot': '누와이라우 / 楼外楼', 'bg': 'red'},
+    {'name': '东坡肉', 'nameKo': '동파육', 'desc': '소동파가 즐긴 돼지고기 조림 / 苏东坡喜爱的红烧肉', 'spot': '누와이라우 / 楼外楼', 'bg': 'orange'},
+    {'name': '龙井虾仁', 'nameKo': '룽징새우', 'desc': '룽징차 향이 나는 새우 요리 / 带有龙井茶香的虾仁', 'spot': '룽징촌 / 龙井村', 'bg': 'green'},
+    {'name': '定胜糕', 'nameKo': '정승고', 'desc': '하방가 전통 찹쌀 떡 / 河坊街传统糯米糕', 'spot': '하방가 / 河坊街', 'bg': 'purple'},
+    {'name': '宋嫂鱼羹', 'nameKo': '송쇠어갱', 'desc': '누와이라우 전통 수프 / 楼外楼传统鱼羹', 'spot': '누와이라우 / 楼外楼', 'bg': 'blue'},
+    {'name': '葱包桧', 'nameKo': '총바오후이', 'desc': '하방가 길거리 간식 / 河坊街街头小吃', 'spot': '하방가 / 河坊街', 'bg': 'pink'},
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0F7F4),
+      backgroundColor: lightBgColor,
       body: CustomScrollView(
         slivers: [
-          _buildAppBar('항저우 미식 / 杭州美食', 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1200'),
-          SliverToBoxAdapter(child: _IntroCard(
-            title: '고향 지역 소개 / 家乡地区介绍',
-            content: '항저우(杭州)는 중국 저장성 성도로, 서호 문화와 맛있는 항저우 요리로 유명합니다. '
-                '항저우 요리는 담백하고 신선하며, 계절 재료를 중시합니다.\n\n'
-                '杭州是浙江省省会，以西湖文化和美味的杭帮菜闻名。杭帮菜清淡鲜美，注重时令食材。',
-            stats: const [
-              {'icon': Icons.restaurant, 'value': '200+', 'label': '노포 / 老字号', 'color': Color(0xFFE07B39)},
-              {'icon': Icons.eco, 'value': '3대', 'label': '명차 / 名茶', 'color': Color(0xFF1A6B4A)},
-              {'icon': Icons.star, 'value': '8대', 'label': '명요리 / 名菜', 'color': Color(0xFF3A7BD5)},
-            ],
-          )),
-          _buildSectionHeader('음식 명소 / 美食打卡点', const Color(0xFF1A6B4A)),
+          // ---------- 顶部大图 AppBar ----------
+          SliverAppBar(
+            expandedHeight: 340,
+            pinned: true,
+            backgroundColor: primaryColor,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                '항저우 미식 / 杭州美食',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  shadows: [Shadow(blurRadius: 8, color: Colors.black26)],
+                ),
+              ),
+              centerTitle: true,
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.network(
+                    'https://img95.699pic.com/photo/40160/5888.jpg_wh860.jpg',
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => Container(
+                      color: primaryColor,
+                      child: const Icon(Icons.restaurant, color: Colors.white70, size: 80),
+                    ),
+                  ),
+                  // 华丽渐变遮罩
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          Colors.transparent,
+                          primaryColor.withOpacity(0.4),
+                          primaryColor.withOpacity(0.85),
+                        ],
+                        stops: const [0.0, 0.3, 0.6, 1.0],
+                      ),
+                    ),
+                  ),
+                  // 底部装饰文字
+                  Positioned(
+                    bottom: 20,
+                    left: 20,
+                    right: 20,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          '舌尖上的杭州',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            shadows: [Shadow(blurRadius: 12, color: Colors.black38)],
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '미식의 도시, 항저우를 맛보다  |  杭帮菜 · 龙井茶 · 老字号',
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.85),
+                            fontSize: 13,
+                            shadows: [Shadow(blurRadius: 8, color: Colors.black38)],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // ---------- 介绍卡片 ----------
+          SliverToBoxAdapter(
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: [
+                  BoxShadow(
+                    color: primaryColor.withOpacity(0.1),
+                    blurRadius: 20,
+                    offset: const Offset(0, 6),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: primaryColor.withOpacity(0.12),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: const Icon(Icons.restaurant_menu, color: primaryColor, size: 22),
+                      ),
+                      const SizedBox(width: 12),
+                      Text(
+                        '고향 지역 소개 / 家乡地区介绍',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: darkTextColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  const Divider(height: 1, color: Color(0xFFF0E8E0)),
+                  const SizedBox(height: 14),
+                  Text(
+                    '항저우(杭州)는 중국 저장성 성도로, 서호 문화와 맛있는 항저우 요리로 유명합니다. '
+                    '항저우 요리는 담백하고 신선하며, 계절 재료를 중시합니다.\n\n'
+                    '杭州是浙江省省会，以西湖文化和美味的杭帮菜闻名。杭帮菜清淡鲜美，注重时令食材。',
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.8,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  Row(
+                    children: const [
+                      Expanded(child: _StatChip(
+                        icon: Icons.restaurant, value: '200+', label: '노포 / 老字号', color: Color(0xFFC67A3A),
+                      )),
+                      SizedBox(width: 8),
+                      Expanded(child: _StatChip(
+                        icon: Icons.eco, value: '3대', label: '명차 / 名茶', color: Color(0xFF4A8A5A),
+                      )),
+                      SizedBox(width: 8),
+                      Expanded(child: _StatChip(
+                        icon: Icons.star, value: '8대', label: '명요리 / 名菜', color: Color(0xFF3A7BD5),
+                      )),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // ---------- 新增：杭帮菜名菜推荐（去掉 emoji） ----------
+          SliverToBoxAdapter(
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: [
+                  BoxShadow(
+                    color: accentColor.withOpacity(0.15),
+                    blurRadius: 16,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: accentColor.withOpacity(0.15),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: const Icon(Icons.food_bank, color: accentColor, size: 22),
+                      ),
+                      const SizedBox(width: 12),
+                      Text(
+                        '항저우 대표 요리 / 杭州代表美食',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: darkTextColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  const Divider(height: 1, color: Color(0xFFF0E8E0)),
+                  const SizedBox(height: 14),
+                  // 名菜网格 (3列)
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 1.2,
+                    ),
+                    itemCount: famousDishes.length,
+                    itemBuilder: (context, index) {
+                      final dish = famousDishes[index];
+                      return Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: primaryColor.withOpacity(0.04),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: primaryColor.withOpacity(0.1)),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              _getFoodIcon(index),
+                              color: primaryColor,
+                              size: 26,
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              dish['name']!,
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: darkTextColor,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              dish['nameKo']!,
+                              style: const TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              dish['desc']!,
+                              style: const TextStyle(
+                                fontSize: 9,
+                                color: Colors.grey,
+                              ),
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // ---------- 美食打卡点标题 ----------
+          _buildSectionHeader('음식 명소 / 美食打卡点', primaryColor, Icons.location_on),
+
+          // ---------- 景点卡片列表 ----------
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) => _AttractionCard(
                   attraction: attractions[index],
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AttractionDetailPage(attraction: attractions[index]))),
+                  primaryColor: primaryColor,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => AttractionDetailPage(
+                      attraction: attractions[index],
+                      primaryColor: primaryColor,
+                    )),
+                  ),
                 ),
                 childCount: attractions.length,
               ),
             ),
           ),
-          _buildSectionHeader('추천 미식 투어 / 推荐美食路线', const Color(0xFF3A7BD5)),
-          SliverToBoxAdapter(child: _RouteCard(routes: const [
-            ['하방가 / 河坊街 (정승고, 총바오후이)', '우산 야시장 / 吴山夜市 (소고기 버미엘)'],
-            ['누와이라우 / 楼外楼 (서호초어, 동파육)', '취웬관 / 奎元馆 (새우튀김 우동)'],
-            ['룽징촌 / 龙井村 (룽징새우, 차)', '메이자우 / 梅家坞 (농가 요리)'],
-          ])),
-          _buildSectionHeader('경관별 추천 음식 / 景点相关美食', const Color(0xFFE07B39)),
+
+          // ---------- 美食路线标题 ----------
+          _buildSectionHeader('추천 미식 투어 / 推荐美食路线', accentColor, Icons.route),
+
+          // ---------- 路线卡片 ----------
+          SliverToBoxAdapter(
+            child: Container(
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: [
+                  BoxShadow(
+                    color: accentColor.withOpacity(0.15),
+                    blurRadius: 16,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  _RouteDay(day: '1일차 / 第一天', stops: ['하방가 / 河坊街 (정승고, 총바오후이)', '우산 야시장 / 吴山夜市 (소고기 버미엘)']),
+                  const SizedBox(height: 14),
+                  const Divider(height: 1, color: Color(0xFFF0E8E0)),
+                  const SizedBox(height: 14),
+                  _RouteDay(day: '2일차 / 第二天', stops: ['누와이라우 / 楼外楼 (서호초어, 동파육)', '취웬관 / 奎元馆 (새우튀김 우동)']),
+                  const SizedBox(height: 14),
+                  const Divider(height: 1, color: Color(0xFFF0E8E0)),
+                  const SizedBox(height: 14),
+                  _RouteDay(day: '3일차 / 第三天', stops: ['룽징촌 / 龙井村 (룽징새우, 차)', '메이자우 / 梅家坞 (농가 요리)']),
+                ],
+              ),
+            ),
+          ),
+
+          // ---------- 相关美食标题 ----------
+          _buildSectionHeader('경관별 추천 음식 / 景点相关美食', accentColor, Icons.restaurant),
+
+          // ---------- 美食卡片列表 ----------
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 30),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
-                (context, index) => _FoodCard(food: _foodList[index]),
+                (context, index) => _FoodCard(food: _foodList[index], primaryColor: primaryColor),
                 childCount: _foodList.length,
               ),
             ),
@@ -104,117 +416,544 @@ class HangzhouFoodPage extends StatelessWidget {
     );
   }
 
-  SliverAppBar _buildAppBar(String title, String imageUrl) {
-    return SliverAppBar(
-      expandedHeight: 280,
-      pinned: true,
-      backgroundColor: const Color(0xFF1A6B4A),
-      flexibleSpace: FlexibleSpaceBar(
-        title: Text(title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-        background: Stack(fit: StackFit.expand, children: [
-          Image.network(imageUrl, fit: BoxFit.cover, errorBuilder: (_, __, ___) => Container(color: Colors.grey[300])),
-          Container(decoration: const BoxDecoration(gradient: LinearGradient(colors: [Colors.transparent, Colors.black45], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
-        ]),
-      ),
-    );
+  // 获取食物对应的图标（替代 emoji）
+  IconData _getFoodIcon(int index) {
+    const icons = [
+      Icons.set_meal,
+      Icons.restaurant,
+      Icons.food_bank,
+      Icons.soup_kitchen,
+      Icons.kitchen,
+      Icons.lunch_dining,
+    ];
+    return icons[index % icons.length];
   }
 
-  SliverToBoxAdapter _buildSectionHeader(String title, Color color) {
+  // 区块标题组件（去掉 emoji，改用 Icon）
+  SliverToBoxAdapter _buildSectionHeader(String title, Color color, IconData icon) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
-        child: Row(children: [
-          Container(width: 4, height: 22, decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(2))),
-          const SizedBox(width: 8),
-          Text(title, style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: color)),
-        ]),
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 12),
+        child: Row(
+          children: [
+            Container(
+              width: 5,
+              height: 24,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Icon(icon, color: color, size: 20),
+            const SizedBox(width: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: color,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class _IntroCard extends StatelessWidget {
-  final String title; final String content; final List<Map<String, dynamic>> stats;
-  const _IntroCard({required this.title, required this.content, required this.stats});
+// ================= 统计卡片 =================
+class _StatChip extends StatelessWidget {
+  final IconData icon;
+  final String value;
+  final String label;
+  final Color color;
+
+  const _StatChip({
+    required this.icon,
+    required this.value,
+    required this.label,
+    required this.color,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)]),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [Container(padding: const EdgeInsets.all(8), decoration: BoxDecoration(color: const Color(0xFF1A6B4A).withOpacity(0.12), borderRadius: BorderRadius.circular(10)), child: const Icon(Icons.location_city, color: Color(0xFF1A6B4A), size: 20)), const SizedBox(width: 10), Text(title, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF1A6B4A)))]),
-        const SizedBox(height: 12),
-        const Divider(),
-        const SizedBox(height: 12),
-        Text(content, style: const TextStyle(fontSize: 13, height: 1.7, color: Color(0xFF444444))),
-        const SizedBox(height: 16),
-        Row(children: stats.map((stat) => Expanded(child: _StatChip(icon: stat['icon'], value: stat['value'], label: stat['label'], color: stat['color']))).toList()),
-      ]),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: color.withOpacity(0.2)),
+      ),
+      child: Column(
+        children: [
+          Icon(icon, color: color, size: 20),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 10, color: Colors.grey),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
 
-class _StatChip extends StatelessWidget {
-  final IconData icon; final String value; final String label; final Color color;
-  const _StatChip({required this.icon, required this.value, required this.label, required this.color});
-  @override
-  Widget build(BuildContext context) => Container(margin: const EdgeInsets.symmetric(horizontal: 4), padding: const EdgeInsets.symmetric(vertical: 8), decoration: BoxDecoration(color: color.withOpacity(0.08), borderRadius: BorderRadius.circular(12), border: Border.all(color: color.withOpacity(0.25))), child: Column(children: [Icon(icon, color: color, size: 18), const SizedBox(height: 4), Text(value, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: color)), Text(label, style: const TextStyle(fontSize: 10, color: Colors.grey))]));
-}
-
+// ================= 景点卡片（带主题色） =================
 class _AttractionCard extends StatelessWidget {
-  final Map<String, dynamic> attraction; final VoidCallback onTap;
-  const _AttractionCard({required this.attraction, required this.onTap});
+  final Map<String, dynamic> attraction;
+  final VoidCallback onTap;
+  final Color primaryColor;
+
+  const _AttractionCard({
+    required this.attraction,
+    required this.onTap,
+    required this.primaryColor,
+  });
+
   @override
-  Widget build(BuildContext context) => GestureDetector(onTap: onTap, child: Container(margin: const EdgeInsets.only(bottom: 16), decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 10)]), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    ClipRRect(borderRadius: const BorderRadius.vertical(top: Radius.circular(16)), child: Image.network(attraction['coverUrl'], height: 180, width: double.infinity, fit: BoxFit.cover, errorBuilder: (_, __, ___) => Container(height: 180, color: Colors.grey[200], child: const Icon(Icons.broken_image, size: 60)))),
-    Padding(padding: const EdgeInsets.all(14), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(attraction['name'], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)), Row(children: [Text(attraction['nameZh'], style: const TextStyle(fontSize: 11, color: Colors.grey)), const SizedBox(width: 8), const Icon(Icons.star, color: Color(0xFFFFC107), size: 13), Text(attraction['rating'], style: const TextStyle(fontSize: 11, color: Color(0xFFFFC107)))])]),
-        Container(padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6), decoration: BoxDecoration(color: const Color(0xFF1A6B4A), borderRadius: BorderRadius.circular(20)), child: const Row(children: [Text('상세보기 / 详情', style: TextStyle(color: Colors.white, fontSize: 11)), SizedBox(width: 4), Icon(Icons.arrow_forward_ios, color: Colors.white, size: 10)]))
-      ]),
-      const SizedBox(height: 8),
-      Text((attraction['description'] as String).split('\n\n')[0], maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 13, color: Color(0xFF666666))),
-      const SizedBox(height: 10),
-      Wrap(spacing: 6, runSpacing: 6, children: (attraction['highlights'] as List<String>).map((h) => Container(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3), decoration: BoxDecoration(color: const Color(0xFFE8F5EE), borderRadius: BorderRadius.circular(20), border: Border.all(color: const Color(0xFFB2DFCE))), child: Text(h, style: const TextStyle(fontSize: 11, color: Color(0xFF1A6B4A))))).toList())
-    ]))
-  ])));
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 16,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 图片区域
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+              child: Stack(
+                children: [
+                  Image.network(
+                    attraction['coverUrl'],
+                    height: 190,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => Container(
+                      height: 190,
+                      color: Colors.grey[200],
+                      child: const Icon(Icons.broken_image, size: 60),
+                    ),
+                  ),
+                  // 渐变遮罩
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.transparent, Colors.black.withOpacity(0.3)],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // 评分徽章
+                  Positioned(
+                    top: 12,
+                    right: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.star, color: Color(0xFFFFC107), size: 14),
+                          const SizedBox(width: 4),
+                          Text(
+                            attraction['rating'],
+                            style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // 内容区域
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              attraction['name'],
+                              style: const TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF1A1A1A),
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              attraction['nameZh'],
+                              style: const TextStyle(fontSize: 12, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [primaryColor, primaryColor.withOpacity(0.7)],
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Row(
+                          children: [
+                            Text('详情', style: TextStyle(color: Colors.white, fontSize: 11)),
+                            SizedBox(width: 4),
+                            Icon(Icons.arrow_forward_ios, color: Colors.white, size: 10),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    (attraction['description'] as String).split('\n\n')[0],
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 13, color: Color(0xFF666666), height: 1.5),
+                  ),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 6,
+                    children: (attraction['highlights'] as List<String>).map((h) => Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: primaryColor.withOpacity(0.08),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: primaryColor.withOpacity(0.2)),
+                      ),
+                      child: Text(
+                        h,
+                        style: TextStyle(fontSize: 11, color: primaryColor, fontWeight: FontWeight.w500),
+                      ),
+                    )).toList(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
-class _RouteCard extends StatelessWidget {
-  final List<List<String>> routes;
-  const _RouteCard({required this.routes});
-  @override
-  Widget build(BuildContext context) => Container(margin: const EdgeInsets.all(16), padding: const EdgeInsets.all(16), decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)]), child: Column(children: List.generate(routes.length, (i) => Column(children: [ _RouteDay(day: '${i+1}일차 / 第${i+1}天', stops: routes[i]), if (i != routes.length-1) const SizedBox(height: 12) ]))));
-}
-
+// ================= 路线日卡片（无 const，避免常量问题） =================
 class _RouteDay extends StatelessWidget {
-  final String day; final List<String> stops;
+  final String day;
+  final List<String> stops;
+
   const _RouteDay({required this.day, required this.stops});
+
   @override
-  Widget build(BuildContext context) => Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    Container(padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6), decoration: BoxDecoration(color: const Color(0xFF3A7BD5), borderRadius: BorderRadius.circular(20)), child: Text(day, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold))),
-    const SizedBox(width: 12),
-    Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: List.generate(stops.length, (i) => Padding(padding: const EdgeInsets.only(bottom: 4), child: Row(children: [Icon(i == stops.length-1 ? Icons.flag : Icons.arrow_forward, size: 14, color: const Color(0xFF3A7BD5)), const SizedBox(width: 6), Expanded(child: Text(stops[i], style: const TextStyle(fontSize: 12)))])))))
-  ]);
+  Widget build(BuildContext context) {
+    final primaryColor = HangzhouFoodPage.primaryColor;
+    final accentColor = HangzhouFoodPage.accentColor;
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [primaryColor, accentColor],
+            ),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Text(
+            day,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(stops.length, (i) => Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Row(
+                children: [
+                  Icon(
+                    i == stops.length - 1 ? Icons.flag : Icons.arrow_forward,
+                    size: 14,
+                    color: primaryColor,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      stops[i],
+                      style: const TextStyle(fontSize: 13, color: Color(0xFF444444)),
+                    ),
+                  ),
+                ],
+              ),
+            )),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
+// ================= 美食卡片（无 emoji，用 Icon 替代） =================
 class _FoodCard extends StatelessWidget {
   final Map<String, String> food;
-  const _FoodCard({required this.food});
-  @override
-  Widget build(BuildContext context) => Container(margin: const EdgeInsets.only(bottom: 10), padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12), decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 6)]), child: Row(children: [
-    Container(width: 48, height: 48, decoration: BoxDecoration(color: _foodBgColor(food['bg']!), borderRadius: BorderRadius.circular(12)), child: Center(child: Text(food['emoji']!, style: const TextStyle(fontSize: 26)))),
-    const SizedBox(width: 12),
-    Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(food['name']!, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF8B4513))), const SizedBox(height: 2), Text(food['desc']!, style: const TextStyle(fontSize: 12, color: Color(0xFF666666)))])),
-    Container(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), decoration: BoxDecoration(color: const Color(0xFFE8F5EE), borderRadius: BorderRadius.circular(20)), child: Text(food['spot']!, style: const TextStyle(fontSize: 10, color: Color(0xFF1A6B4A))))
-  ]));
-}
-Color _foodBgColor(String? bg) { switch(bg) { case 'red': return const Color(0xFFFFEBEB); case 'purple': return const Color(0xFFF3E5F5); case 'orange': return const Color(0xFFFFF3E0); default: return const Color(0xFFF5F5F5); } }
+  final Color primaryColor;
 
+  const _FoodCard({required this.food, required this.primaryColor});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 52,
+            height: 52,
+            decoration: BoxDecoration(
+              color: _foodBgColor(food['bg']!),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Center(
+              child: Icon(
+                _getIconForFood(food['name']!),
+                color: primaryColor,
+                size: 26,
+              ),
+            ),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${food['name']} / ${food['nameKo']}',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF4A3520),
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  food['desc']!,
+                  style: const TextStyle(fontSize: 12, color: Color(0xFF888888)),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: primaryColor.withOpacity(0.08),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              food['spot']!,
+              style: TextStyle(fontSize: 10, color: primaryColor, fontWeight: FontWeight.w500),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  IconData _getIconForFood(String name) {
+    if (name.contains('醋鱼') || name.contains('서호초어')) return Icons.set_meal;
+    if (name.contains('东坡肉') || name.contains('동파육')) return Icons.restaurant;
+    if (name.contains('虾仁') || name.contains('새우')) return Icons.food_bank;
+    if (name.contains('定胜糕') || name.contains('정승고')) return Icons.cake;
+    if (name.contains('鱼羹') || name.contains('어갱')) return Icons.soup_kitchen;
+    if (name.contains('葱包桧') || name.contains('총바오후이')) return Icons.lunch_dining;
+    return Icons.restaurant;
+  }
+
+  Color _foodBgColor(String? bg) {
+    switch (bg) {
+      case 'red': return const Color(0xFFFFEBEB);
+      case 'purple': return const Color(0xFFF3E5F5);
+      case 'orange': return const Color(0xFFFFF3E0);
+      case 'green': return const Color(0xFFE8F5E9);
+      case 'blue': return const Color(0xFFE3F0FF);
+      case 'pink': return const Color(0xFFFCE4EC);
+      default: return const Color(0xFFF5F5F5);
+    }
+  }
+}
+
+// ================= 景点详情页 =================
 class AttractionDetailPage extends StatelessWidget {
   final Map<String, dynamic> attraction;
-  const AttractionDetailPage({super.key, required this.attraction});
+  final Color primaryColor;
+
+  const AttractionDetailPage({
+    super.key,
+    required this.attraction,
+    required this.primaryColor,
+  });
+
   @override
-  Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: Text(attraction['name'])), body: SingleChildScrollView(padding: const EdgeInsets.all(16), child: Column(children: [Image.network(attraction['coverUrl'], height: 200), const SizedBox(height: 16), Text(attraction['description'])])));
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: HangzhouFoodPage.lightBgColor,
+      appBar: AppBar(
+        title: Text(attraction['name']),
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                attraction['coverUrl'],
+                height: 220,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Container(
+                  height: 220,
+                  color: Colors.grey[200],
+                  child: const Icon(Icons.broken_image, size: 60),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              attraction['name'],
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF1A1A1A),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              attraction['nameZh'],
+              style: const TextStyle(fontSize: 14, color: Colors.grey),
+            ),
+            const SizedBox(height: 16),
+            const Divider(),
+            const SizedBox(height: 16),
+            Text(
+              attraction['description'],
+              style: const TextStyle(fontSize: 14, height: 1.8, color: Color(0xFF444444)),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: primaryColor.withOpacity(0.06),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: primaryColor.withOpacity(0.15)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.restaurant, color: Color(0xFFC67A3A), size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        attraction['food'],
+                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF4A3520)),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    attraction['foodDesc'],
+                    style: const TextStyle(fontSize: 13, color: Color(0xFF666666)),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.lightbulb_outline, color: Color(0xFFF9A825)),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      attraction['tip'],
+                      style: const TextStyle(fontSize: 13, color: Color(0xFF555555)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
+          ],
+        ),
+      ),
+    );
+  }
 }
