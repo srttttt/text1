@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
+// ============================================================
+//  颜色常量（全局）
+// ============================================================
+const Color _primaryColor = Color(0xFFC67A3A);
+const Color _accentColor = Color(0xFFE8A75A);
+const Color _lightBgColor = Color(0xFFFDF8F3);
+const Color _darkTextColor = Color(0xFF4A3520);
+
+// ============================================================
+//  主页面
+// ============================================================
 class HangzhouFoodPage extends StatelessWidget {
   const HangzhouFoodPage({super.key});
 
-  // 🎨 暖橘主题配色
-  static const primaryColor = Color(0xFFC67A3A);
-  static const accentColor = Color(0xFFE8A75A);
-  static const lightBgColor = Color(0xFFFDF8F3);
-  static const darkTextColor = Color(0xFF4A3520);
-
-  // 新增：杭帮菜代表名菜
   static const List<Map<String, String>> famousDishes = [
     {'name': '西湖醋鱼', 'nameKo': '서호초어', 'desc': '酸甜鲜嫩，杭帮菜之首', 'descKo': '새콤달콤하고 부드러운 식감, 항저우 요리의 으뜸'},
     {'name': '东坡肉', 'nameKo': '동파육', 'desc': '肥而不腻，软糯香甜', 'descKo': '느끼하지 않고 부드러우며 달콤함'},
@@ -61,31 +65,72 @@ class HangzhouFoodPage extends StatelessWidget {
     },
   ];
 
-  // 美食列表（去掉 emoji，改用文字标签）
   static const List<Map<String, String>> _foodList = [
-    {'name': '西湖醋鱼', 'nameKo': '서호초어', 'desc': '누와이라우 대표 요리 / 楼外楼招牌菜', 'spot': '누와이라우 / 楼外楼', 'bg': 'red'},
-    {'name': '东坡肉', 'nameKo': '동파육', 'desc': '소동파가 즐긴 돼지고기 조림 / 苏东坡喜爱的红烧肉', 'spot': '누와이라우 / 楼外楼', 'bg': 'orange'},
-    {'name': '龙井虾仁', 'nameKo': '룽징새우', 'desc': '룽징차 향이 나는 새우 요리 / 带有龙井茶香的虾仁', 'spot': '룽징촌 / 龙井村', 'bg': 'green'},
-    {'name': '定胜糕', 'nameKo': '정승고', 'desc': '하방가 전통 찹쌀 떡 / 河坊街传统糯米糕', 'spot': '하방가 / 河坊街', 'bg': 'purple'},
-    {'name': '宋嫂鱼羹', 'nameKo': '송쇠어갱', 'desc': '누와이라우 전통 수프 / 楼外楼传统鱼羹', 'spot': '누와이라우 / 楼外楼', 'bg': 'blue'},
-    {'name': '葱包桧', 'nameKo': '총바오후이', 'desc': '하방가 길거리 간식 / 河坊街街头小吃', 'spot': '하방가 / 河坊街', 'bg': 'pink'},
+    {
+      'name': '西湖醋鱼',
+      'nameKo': '서호초어',
+      'desc': '누와이라우 대표 요리 / 楼外楼招牌菜',
+      'spot': '누와이라우 / 楼外楼',
+      'bg': 'red',
+      'imageUrl': 'https://thf.bing.com/th/id/R.ce816b7830b57988540f904c1b194eba?rik=cLu57jgzi%2fuTyw&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10117%2f113%2fw1024h689%2f20190914%2f3283-iepyyhi5761195.jpg&ehk=Wq2DuvT2CzEvoHIYotZU8Ifsr%2bOHsgMYxD%2bLTNs33c0%3d&risl=&pid=ImgRaw&r=0',
+    },
+    {
+      'name': '东坡肉',
+      'nameKo': '동파육',
+      'desc': '소동파가 즐긴 돼지고기 조림 / 苏东坡喜爱的红烧肉',
+      'spot': '누와이라우 / 楼外楼',
+      'bg': 'orange',
+      'imageUrl': 'https://tse3.mm.bing.net/th/id/OIP.NSpTLqOKhwUW0M_VqsJahgHaE7?r=0&cb=thfc1falcon2&rs=1&pid=ImgDetMain&o=7&rm=3',
+    },
+    {
+      'name': '龙井虾仁',
+      'nameKo': '룽징새우',
+      'desc': '룽징차 향이 나는 새우 요리 / 带有龙井茶香的虾仁',
+      'spot': '룽징촌 / 龙井村',
+      'bg': 'green',
+      'imageUrl': 'https://thf.bing.com/th/id/R.e1013af9d54898c34eb064bf966395e8?rik=S%2brCLPa08piSaA&riu=http%3a%2f%2fpic.ntimg.cn%2ffile%2f20151007%2f9885883_224102203000_2.jpg&ehk=fPmA0LCvowXpUEC88LLOAj06TSEc4r3sQfwg%2bCTHNvg%3d&risl=&pid=ImgRaw&r=0',
+    },
+    {
+      'name': '定胜糕',
+      'nameKo': '정승고',
+      'desc': '하방가 전통 찹쌀 떡 / 河坊街传统糯米糕',
+      'spot': '하방가 / 河坊街',
+      'bg': 'purple',
+      'imageUrl': 'https://tse1.mm.bing.net/th/id/OIP.IdVoZqDuCI_txmJHyh7wYAHaE7?r=0&cb=thfc1falcon2&rs=1&pid=ImgDetMain&o=7&rm=3',
+    },
+    {
+      'name': '宋嫂鱼羹',
+      'nameKo': '송쇠어갱',
+      'desc': '누와이라우 전통 수프 / 楼外楼传统鱼羹',
+      'spot': '누와이라우 / 楼外楼',
+      'bg': 'blue',
+      'imageUrl': 'https://thf.bing.com/th/id/R.2beb39788b9acea01ecce5aa0915dd09?rik=D2OXIphaPVnfPw&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn08%2f192%2fw1024h768%2f20180523%2f990e-hawmauc2587077.jpg&ehk=hi4QKjwCFm%2f5LRkPFidLL8akP5j%2fmL9jjxJXmOgeqnY%3d&risl=&pid=ImgRaw&r=0',
+    },
+    {
+      'name': '葱包桧',
+      'nameKo': '총바오후이',
+      'desc': '하방가 길거리 간식 / 河坊街街头小吃',
+      'spot': '하방가 / 河坊街',
+      'bg': 'pink',
+      'imageUrl': 'https://thf.bing.com/th/id/R.89ddf2cea08c6c65bc45fe03a415fae4?rik=cVhUiZJJYtShhA&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn%2fw460h348%2f20171201%2f92ab-fypikwt2100866.jpg&ehk=jEOTkJauObKwXSh26l3agZNWTnTAPCzvyw20Qf%2bK8Rg%3d&risl=&pid=ImgRaw&r=0',
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightBgColor,
+      backgroundColor: _lightBgColor,
       body: CustomScrollView(
         slivers: [
-          // ---------- 顶部大图 AppBar ----------
+          // ---- AppBar ----
           SliverAppBar(
             expandedHeight: 340,
             pinned: true,
-            backgroundColor: primaryColor,
+            backgroundColor: _primaryColor,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(
+              title: const Text(
                 '항저우 미식 / 杭州美食',
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -100,11 +145,10 @@ class HangzhouFoodPage extends StatelessWidget {
                     'https://img95.699pic.com/photo/40160/5888.jpg_wh860.jpg',
                     fit: BoxFit.cover,
                     errorBuilder: (_, __, ___) => Container(
-                      color: primaryColor,
+                      color: _primaryColor,
                       child: const Icon(Icons.restaurant, color: Colors.white70, size: 80),
                     ),
                   ),
-                  // 华丽渐变遮罩
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -113,22 +157,21 @@ class HangzhouFoodPage extends StatelessWidget {
                         colors: [
                           Colors.transparent,
                           Colors.transparent,
-                          primaryColor.withOpacity(0.4),
-                          primaryColor.withOpacity(0.85),
+                          _primaryColor.withOpacity(0.4),
+                          _primaryColor.withOpacity(0.85),
                         ],
                         stops: const [0.0, 0.3, 0.6, 1.0],
                       ),
                     ),
                   ),
-                  // 底部装饰文字
-                  Positioned(
+                  const Positioned(
                     bottom: 20,
                     left: 20,
                     right: 20,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           '舌尖上的杭州',
                           style: TextStyle(
                             color: Colors.white,
@@ -137,11 +180,11 @@ class HangzhouFoodPage extends StatelessWidget {
                             shadows: [Shadow(blurRadius: 12, color: Colors.black38)],
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: 4),
                         Text(
                           '미식의 도시, 항저우를 맛보다  |  杭帮菜 · 龙井茶 · 老字号',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.85),
+                            color: Colors.white70,
                             fontSize: 13,
                             shadows: [Shadow(blurRadius: 8, color: Colors.black38)],
                           ),
@@ -154,7 +197,7 @@ class HangzhouFoodPage extends StatelessWidget {
             ),
           ),
 
-          // ---------- 介绍卡片 ----------
+          // ---- 介绍卡片 ----
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -164,7 +207,7 @@ class HangzhouFoodPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryColor.withOpacity(0.1),
+                    color: _primaryColor.withOpacity(0.1),
                     blurRadius: 20,
                     offset: const Offset(0, 6),
                   ),
@@ -178,10 +221,10 @@ class HangzhouFoodPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: primaryColor.withOpacity(0.12),
+                          color: _primaryColor.withOpacity(0.12),
                           borderRadius: BorderRadius.circular(14),
                         ),
-                        child: const Icon(Icons.restaurant_menu, color: primaryColor, size: 22),
+                        child: const Icon(Icons.restaurant_menu, color: _primaryColor, size: 22),
                       ),
                       const SizedBox(width: 12),
                       Text(
@@ -189,7 +232,7 @@ class HangzhouFoodPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: darkTextColor,
+                          color: _darkTextColor,
                         ),
                       ),
                     ],
@@ -228,7 +271,7 @@ class HangzhouFoodPage extends StatelessWidget {
             ),
           ),
 
-          // ---------- 新增：杭帮菜名菜推荐（去掉 emoji） ----------
+          // ---- 名菜推荐网格 ----
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -238,7 +281,7 @@ class HangzhouFoodPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: accentColor.withOpacity(0.15),
+                    color: _accentColor.withOpacity(0.15),
                     blurRadius: 16,
                     offset: const Offset(0, 4),
                   ),
@@ -252,10 +295,10 @@ class HangzhouFoodPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: accentColor.withOpacity(0.15),
+                          color: _accentColor.withOpacity(0.15),
                           borderRadius: BorderRadius.circular(14),
                         ),
-                        child: const Icon(Icons.food_bank, color: accentColor, size: 22),
+                        child: const Icon(Icons.food_bank, color: _accentColor, size: 22),
                       ),
                       const SizedBox(width: 12),
                       Text(
@@ -263,7 +306,7 @@ class HangzhouFoodPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: darkTextColor,
+                          color: _darkTextColor,
                         ),
                       ),
                     ],
@@ -271,7 +314,6 @@ class HangzhouFoodPage extends StatelessWidget {
                   const SizedBox(height: 14),
                   const Divider(height: 1, color: Color(0xFFF0E8E0)),
                   const SizedBox(height: 14),
-                  // 名菜网格 (3列)
                   GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -287,44 +329,34 @@ class HangzhouFoodPage extends StatelessWidget {
                       return Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: primaryColor.withOpacity(0.04),
+                          color: _primaryColor.withOpacity(0.04),
                           borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: primaryColor.withOpacity(0.1)),
+                          border: Border.all(color: _primaryColor.withOpacity(0.1)),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              _getFoodIcon(index),
-                              color: primaryColor,
-                              size: 26,
-                            ),
+                            Icon(_getFoodIcon(index), color: _primaryColor, size: 26),
                             const SizedBox(height: 6),
                             Text(
                               dish['name']!,
                               style: const TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
-                                color: darkTextColor,
+                                color: _darkTextColor,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 2),
                             Text(
                               dish['nameKo']!,
-                              style: const TextStyle(
-                                fontSize: 10,
-                                color: Colors.grey,
-                              ),
+                              style: const TextStyle(fontSize: 10, color: Colors.grey),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 2),
                             Text(
                               dish['desc']!,
-                              style: const TextStyle(
-                                fontSize: 9,
-                                color: Colors.grey,
-                              ),
+                              style: const TextStyle(fontSize: 9, color: Colors.grey),
                               textAlign: TextAlign.center,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -339,23 +371,20 @@ class HangzhouFoodPage extends StatelessWidget {
             ),
           ),
 
-          // ---------- 美食打卡点标题 ----------
-          _buildSectionHeader('음식 명소 / 美食打卡点', primaryColor, Icons.location_on),
+          // ---- 美食打卡点标题 ----
+          _buildSectionHeader('음식 명소 / 美食打卡点', _primaryColor, Icons.location_on),
 
-          // ---------- 景点卡片列表 ----------
+          // ---- 景点卡片 ----
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) => _AttractionCard(
                   attraction: attractions[index],
-                  primaryColor: primaryColor,
+                  primaryColor: _primaryColor,
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => AttractionDetailPage(
-                      attraction: attractions[index],
-                      primaryColor: primaryColor,
-                    )),
+                    MaterialPageRoute(builder: (_) => AttractionDetailPage(attraction: attractions[index])),
                   ),
                 ),
                 childCount: attractions.length,
@@ -363,10 +392,10 @@ class HangzhouFoodPage extends StatelessWidget {
             ),
           ),
 
-          // ---------- 美食路线标题 ----------
-          _buildSectionHeader('추천 미식 투어 / 推荐美食路线', accentColor, Icons.route),
+          // ---- 美食路线标题 ----
+          _buildSectionHeader('추천 미식 투어 / 推荐美食路线', _accentColor, Icons.route),
 
-          // ---------- 路线卡片 ----------
+          // ---- 路线卡片 ----
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.all(16),
@@ -376,37 +405,40 @@ class HangzhouFoodPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: accentColor.withOpacity(0.15),
+                    color: _accentColor.withOpacity(0.15),
                     blurRadius: 16,
                     offset: const Offset(0, 4),
                   ),
                 ],
               ),
-              child: Column(
+              child: const Column(
                 children: [
                   _RouteDay(day: '1일차 / 第一天', stops: ['하방가 / 河坊街 (정승고, 총바오후이)', '우산 야시장 / 吴山夜市 (소고기 버미엘)']),
-                  const SizedBox(height: 14),
-                  const Divider(height: 1, color: Color(0xFFF0E8E0)),
-                  const SizedBox(height: 14),
+                  SizedBox(height: 14),
+                  Divider(height: 1, color: Color(0xFFF0E8E0)),
+                  SizedBox(height: 14),
                   _RouteDay(day: '2일차 / 第二天', stops: ['누와이라우 / 楼外楼 (서호초어, 동파육)', '취웬관 / 奎元馆 (새우튀김 우동)']),
-                  const SizedBox(height: 14),
-                  const Divider(height: 1, color: Color(0xFFF0E8E0)),
-                  const SizedBox(height: 14),
+                  SizedBox(height: 14),
+                  Divider(height: 1, color: Color(0xFFF0E8E0)),
+                  SizedBox(height: 14),
                   _RouteDay(day: '3일차 / 第三天', stops: ['룽징촌 / 龙井村 (룽징새우, 차)', '메이자우 / 梅家坞 (농가 요리)']),
                 ],
               ),
             ),
           ),
 
-          // ---------- 相关美食标题 ----------
-          _buildSectionHeader('경관별 추천 음식 / 景点相关美食', accentColor, Icons.restaurant),
+          // ---- 相关美食标题 ----
+          _buildSectionHeader('경관별 추천 음식 / 景点相关美食', _accentColor, Icons.restaurant),
 
-          // ---------- 美食卡片列表 ----------
+          // ---- 美食卡片（带图片） ----
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 30),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
-                (context, index) => _FoodCard(food: _foodList[index], primaryColor: primaryColor),
+                (context, index) => _FoodCard(
+                  food: _foodList[index],
+                  primaryColor: _primaryColor,
+                ),
                 childCount: _foodList.length,
               ),
             ),
@@ -416,7 +448,7 @@ class HangzhouFoodPage extends StatelessWidget {
     );
   }
 
-  // 获取食物对应的图标（替代 emoji）
+  // ---- 辅助函数 ----
   IconData _getFoodIcon(int index) {
     const icons = [
       Icons.set_meal,
@@ -429,7 +461,6 @@ class HangzhouFoodPage extends StatelessWidget {
     return icons[index % icons.length];
   }
 
-  // 区块标题组件（去掉 emoji，改用 Icon）
   SliverToBoxAdapter _buildSectionHeader(String title, Color color, IconData icon) {
     return SliverToBoxAdapter(
       child: Padding(
@@ -463,7 +494,9 @@ class HangzhouFoodPage extends StatelessWidget {
   }
 }
 
-// ================= 统计卡片 =================
+// ============================================================
+//  统计卡片
+// ============================================================
 class _StatChip extends StatelessWidget {
   final IconData icon;
   final String value;
@@ -509,7 +542,9 @@ class _StatChip extends StatelessWidget {
   }
 }
 
-// ================= 景点卡片（带主题色） =================
+// ============================================================
+//  景点卡片
+// ============================================================
 class _AttractionCard extends StatelessWidget {
   final Map<String, dynamic> attraction;
   final VoidCallback onTap;
@@ -541,7 +576,6 @@ class _AttractionCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 图片区域
             ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
               child: Stack(
@@ -557,7 +591,6 @@ class _AttractionCard extends StatelessWidget {
                       child: const Icon(Icons.broken_image, size: 60),
                     ),
                   ),
-                  // 渐变遮罩
                   Positioned(
                     bottom: 0,
                     left: 0,
@@ -573,7 +606,6 @@ class _AttractionCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // 评分徽章
                   Positioned(
                     top: 12,
                     right: 12,
@@ -598,7 +630,6 @@ class _AttractionCard extends StatelessWidget {
                 ],
               ),
             ),
-            // 内容区域
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -679,7 +710,9 @@ class _AttractionCard extends StatelessWidget {
   }
 }
 
-// ================= 路线日卡片（无 const，避免常量问题） =================
+// ============================================================
+//  路线日卡片
+// ============================================================
 class _RouteDay extends StatelessWidget {
   final String day;
   final List<String> stops;
@@ -688,8 +721,6 @@ class _RouteDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = HangzhouFoodPage.primaryColor;
-    final accentColor = HangzhouFoodPage.accentColor;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -697,7 +728,7 @@ class _RouteDay extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [primaryColor, accentColor],
+              colors: [_primaryColor, _accentColor],
             ),
             borderRadius: BorderRadius.circular(20),
           ),
@@ -721,7 +752,7 @@ class _RouteDay extends StatelessWidget {
                   Icon(
                     i == stops.length - 1 ? Icons.flag : Icons.arrow_forward,
                     size: 14,
-                    color: primaryColor,
+                    color: _primaryColor,
                   ),
                   const SizedBox(width: 8),
                   Expanded(
@@ -740,7 +771,9 @@ class _RouteDay extends StatelessWidget {
   }
 }
 
-// ================= 美食卡片（无 emoji，用 Icon 替代） =================
+// ============================================================
+//  美食卡片（带图片）
+// ============================================================
 class _FoodCard extends StatelessWidget {
   final Map<String, String> food;
   final Color primaryColor;
@@ -765,19 +798,48 @@ class _FoodCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
-            width: 52,
-            height: 52,
-            decoration: BoxDecoration(
-              color: _foodBgColor(food['bg']!),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Center(
-              child: Icon(
-                _getIconForFood(food['name']!),
-                color: primaryColor,
-                size: 26,
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(14),
+            child: Image.network(
+              food['imageUrl']!,
+              width: 52,
+              height: 52,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  width: 52,
+                  height: 52,
+                  decoration: BoxDecoration(
+                    color: _foodBgColor(food['bg']!),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      _getIconForFood(food['name']!),
+                      color: primaryColor,
+                      size: 28,
+                    ),
+                  ),
+                );
+              },
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Container(
+                  width: 52,
+                  height: 52,
+                  decoration: BoxDecoration(
+                    color: _foodBgColor(food['bg']!),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           const SizedBox(width: 14),
@@ -840,24 +902,24 @@ class _FoodCard extends StatelessWidget {
   }
 }
 
-// ================= 景点详情页 =================
+// ============================================================
+//  景点详情页
+// ============================================================
 class AttractionDetailPage extends StatelessWidget {
   final Map<String, dynamic> attraction;
-  final Color primaryColor;
 
   const AttractionDetailPage({
     super.key,
     required this.attraction,
-    required this.primaryColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HangzhouFoodPage.lightBgColor,
+      backgroundColor: _lightBgColor,
       appBar: AppBar(
         title: Text(attraction['name']),
-        backgroundColor: primaryColor,
+        backgroundColor: _primaryColor,
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -905,20 +967,20 @@ class AttractionDetailPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.06),
+                color: _primaryColor.withOpacity(0.06),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: primaryColor.withOpacity(0.15)),
+                border: Border.all(color: _primaryColor.withOpacity(0.15)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.restaurant, color: Color(0xFFC67A3A), size: 20),
+                      const Icon(Icons.restaurant, color: _primaryColor, size: 20),
                       const SizedBox(width: 8),
                       Text(
                         attraction['food'],
-                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF4A3520)),
+                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: _darkTextColor),
                       ),
                     ],
                   ),
